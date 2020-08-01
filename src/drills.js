@@ -6,50 +6,50 @@ const knexInstance = knex({
   connection: process.env.DB_URL,
 });
 
-// function searchByItemName(searchTerm) {
-//   knexInstance
-//     .select("*")
-//     .from("shopping_list")
-//     .where("name", "ILIKE", `%${searchTerm}%`)
-//     .then((result) => {
-//       console.log("SEARCH TERM", { searchTerm });
-//       console.log(result);
-//     });
-// }
-// searchByItemName("urger");
+function searchByItemName(searchTerm) {
+  knexInstance
+    .select("*")
+    .from("shopping_list")
+    .where("name", "ILIKE", `%${searchTerm}%`)
+    .then((result) => {
+      console.log("SEARCH TERM", { searchTerm });
+      console.log(result);
+    });
+}
+searchByItemName("urger");
 
-// function paginateItems(page) {
-//   const limit = 6;
-//   const offset = limit * (page - 1);
-//   knexInstance
-//     .select("*")
-//     .from("shopping_list")
-//     .limit(limit)
-//     .offset(offset)
-//     .then((result) => {
-//       console.log("PAGINATE ITEMS", { page });
-//       console.log(result);
-//     });
-// }
+function paginateItems(page) {
+  const limit = 6;
+  const offset = limit * (page - 1);
+  knexInstance
+    .select("*")
+    .from("shopping_list")
+    .limit(limit)
+    .offset(offset)
+    .then((result) => {
+      console.log("PAGINATE ITEMS", { page });
+      console.log(result);
+    });
+}
 
-// paginateItems(2);
+paginateItems(2);
 
-// function itemsAddedDaysAgo(daysAgo) {
-//   knexInstance
-//     .select("*")
-//     .from("shopping_list")
-//     .where(
-//       "date_added",
-//       ">",
-//       knexInstance.raw(`now() - '?? days'::INTERVAL`, daysAgo)
-//     )
-//     .then((results) => {
-//       console.log("PRODUCTS ADDED DAYS AGO");
-//       console.log(results);
-//     });
-// }
+function itemsAddedDaysAgo(daysAgo) {
+  knexInstance
+    .select("*")
+    .from("shopping_list")
+    .where(
+      "date_added",
+      ">",
+      knexInstance.raw(`now() - '?? days'::INTERVAL`, daysAgo)
+    )
+    .then((results) => {
+      console.log("PRODUCTS ADDED DAYS AGO");
+      console.log(results);
+    });
+}
 
-// itemsAddedDaysAgo(50);
+itemsAddedDaysAgo(50);
 
 function costPerCategory() {
   knexInstance
