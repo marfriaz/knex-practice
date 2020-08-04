@@ -1,3 +1,4 @@
+const test = require("./testone");
 require("dotenv").config();
 const knex = require("knex");
 
